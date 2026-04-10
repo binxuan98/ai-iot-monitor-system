@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>智慧环境监测与异常预警平台</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+  </head>
+  <body>
+    <header class="header">
+      <h1>智慧环境监测与异常预警平台</h1>
+      <p>Smart IoT Environment Monitoring & Alert Platform</p>
+    </header>
+
+    <main class="container">
+      <section id="loginSection" class="card login-card">
+        <h2>用户登录</h2>
+        <div class="form-row">
+          <label>用户名</label>
+          <input id="username" type="text" placeholder="admin 或 student" />
+        </div>
+        <div class="form-row">
+          <label>密码</label>
+          <input id="password" type="password" placeholder="admin123 或 student123" />
+        </div>
+        <button id="loginBtn">登录系统</button>
+        <p id="loginMessage" class="message"></p>
+      </section>
+
+      <section id="dashboardSection" class="hidden">
+        <div class="toolbar card">
+          <div>
+            <span id="userInfo"></span>
+            <span id="analysisText" class="analysis-text"></span>
+          </div>
+          <div>
+            <button id="refreshBtn">刷新数据</button>
+            <button id="logoutBtn" class="danger">退出登录</button>
+          </div>
+        </div>
+
+        <div class="kpi-grid">
+          <div class="card"><h3>温度(°C)</h3><p id="temperatureValue">-</p></div>
+          <div class="card"><h3>湿度(%)</h3><p id="humidityValue">-</p></div>
+          <div class="card"><h3>PM2.5</h3><p id="pm25Value">-</p></div>
+          <div class="card"><h3>光照(lux)</h3><p id="lightValue">-</p></div>
+          <div class="card"><h3>CO2(ppm)</h3><p id="co2Value">-</p></div>
+          <div class="card"><h3>环境评分</h3><p id="scoreValue">-</p></div>
+        </div>
+
+        <div class="chart-grid">
+          <div class="card chart-card"><h3>环境趋势折线图</h3><div id="lineChart" class="chart"></div></div>
+          <div class="card chart-card"><h3>指标对比柱状图</h3><div id="barChart" class="chart"></div></div>
+          <div class="card chart-card"><h3>环境评分仪表盘</h3><div id="gaugeChart" class="chart"></div></div>
+        </div>
+
+        <div class="table-grid">
+          <div class="card">
+            <h3>异常告警记录</h3>
+            <table>
+              <thead>
+                <tr><th>时间</th><th>等级</th><th>指标</th><th>数值</th><th>说明</th></tr>
+              </thead>
+              <tbody id="alertsTable"></tbody>
+            </table>
+          </div>
+          <div class="card">
+            <h3>系统日志</h3>
+            <table>
+              <thead>
+                <tr><th>时间</th><th>类型</th><th>详情</th></tr>
+              </thead>
+              <tbody id="logsTable"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="./js/api.js"></script>
+    <script src="./js/app.js"></script>
+  </body>
+</html>
